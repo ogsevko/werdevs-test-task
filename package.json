@@ -17,7 +17,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint:js": "eslint ./src",
+    "lint:css": "stylelint ./src",
+    "lint:html": "linthtml ./src",
+    "lint": "concurrently \"npm run lint:js\" \"npm run lint:css\" \"npm run lint:html\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,7 +39,12 @@
     ]
   },
   "devDependencies": {
+    "@linthtml/linthtml": "^0.5.0",
+    "@mate-academy/linthtml-config": "^0.0.1",
+    "@mate-academy/stylelint-config": "^0.0.9",
+    "concurrently": "^5.3.0",
     "gh-pages": "^3.1.0",
-    "node-sass": "^4.14.1"
+    "node-sass": "^4.14.1",
+    "stylelint": "^13.7.2"
   }
 }
