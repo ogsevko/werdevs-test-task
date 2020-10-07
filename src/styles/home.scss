@@ -1,0 +1,41 @@
+.home {
+
+  &__content {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    height: 86.2vh;
+    width: 63.28vw;
+  }
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    position: absolute;
+    top: 17.85vh;
+    right: 1.71vw;
+    max-width: 26.98vw;
+    margin-bottom: 4.07vh;
+
+    font-size: 50px;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fdd000;
+  }
+
+  &__text {
+    position: absolute;
+    top: 33.4vh;
+    right: 1.71vw;
+    max-width: 24.34vw;
+
+    font-size: 27px;
+    text-align: right;
+    color: #dfdfdf;
+    opacity: 0.5;
+  }
+}
