@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { dayNames } from '../data/Data';
+
 const classNames = require('classnames');
 
 export const CalendarWeek = ({ week }) => {
@@ -18,4 +20,4 @@ export const CalendarWeek = ({ week }) => {
       ))}
     </tr>
   );
-}
+};

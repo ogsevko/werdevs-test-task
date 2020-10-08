@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 export function Header() {
@@ -27,5 +28,5 @@ export function Header() {
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};

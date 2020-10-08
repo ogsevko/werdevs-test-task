@@ -1,4 +1,5 @@
-import React, {useState, useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
 import { CalendarWeek } from './CalendarWeek';
 import { dayNames, monthNames } from '../data/Data';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,18 +15,18 @@ export const Calendar = () => {
     setMonth(monthNames[fullDate.getMonth()]);
     setYear(fullDate.getFullYear());
 
-    const calendarWeeks =
-      getDayNumbers(fullDate.getMonth(), fullDate.getFullYear());
+    const calendarWeeks
+      = getDayNumbers(fullDate.getMonth(), fullDate.getFullYear());
 
     setWeeks(calendarWeeks);
   }, []);
 
-  function getDayNumbers(month, year) {
-    const nDaysPrevMonth = new Date(year, month, 0).getDate();
-    const nDaysCurrentMonth = new Date(year, month + 1, 0).getDate();
-    const firstDayCurrentMonth = new Date(year, month, 1).getDay();
-    const lastDayCurrentMonth =
-      new Date(year, month, nDaysCurrentMonth).getDay();
+  function getDayNumbers(newMonth, newYear) {
+    const nDaysPrevMonth = new Date(newYear, newMonth, 0).getDate();
+    const nDaysCurrentMonth = new Date(newYear, newMonth + 1, 0).getDate();
+    const firstDayCurrentMonth = new Date(newYear, newMonth, 1).getDay();
+    const lastDayCurrentMonth
+      = new Date(newYear, newMonth, nDaysCurrentMonth).getDay();
 
     const dayNumbers = [];
     const dayNumbersByWeeks = [];
@@ -82,7 +83,6 @@ export const Calendar = () => {
     return dayNumbersByWeeks;
   }
 
-
   return (
     <div className="calendar">
       <div className="calendar__header">
@@ -100,7 +100,7 @@ export const Calendar = () => {
           className="calendar__arrow"
         />
       </div>
-      
+
       <table className="calendar__month">
         {weeks.map((week) => (
           <CalendarWeek week={week} />
