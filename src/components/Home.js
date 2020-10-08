@@ -3,7 +3,6 @@ import React from 'react';
 export function Home() {
   return (
     <main className="home">
-      <div className="home__container">
         <div className="home__content">
           <img
             src={process.env.PUBLIC_URL + 'home_image.jpg'}
@@ -20,8 +19,7 @@ export function Home() {
             This will save you time.
           </p>
         </div>
-        <div className="calendar"></div>
-      </div>
+        <div className="home__calendar"></div>
     </main>
   )
 }
