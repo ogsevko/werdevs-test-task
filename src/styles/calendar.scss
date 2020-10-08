@@ -1,9 +1,80 @@
 .calendar {
+  position: absolute;
+  top: 150px;
+  left: 97.5px;
 
   &__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    width: 525px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  &__arrow {
+    width: 10px;
+    height: 16px;
+
+    cursor: pointer;
+  }
+
+  &__date {
+    font-size: 23px;
+    color: #dfdfdf;
+    text-transform: uppercase;
+  }
+
+  &__month {
+    margin-bottom: 40px;
+  }
+
+  &__day {
+    position: relative;
+    display: inline-block;
+
+    width: 50px;
+    height: 50px;
+    margin: 7.5px 12.5px;
+
+    font-size: 20px;
+    text-align: center;
+
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  &__day:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  &__day-bright {
+    color: #dfdfdf;
+  }
+
+  &__day-dim {
+    color: #dfdfdf;
+    opacity: 0.25;
+  }
+
+  &__day-active {
+    background-color: #fdd000;
+    color: #3d3d3d;
+  }
+
+  &__number,
+  &__day-name {
+    position: relative;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   }
 }

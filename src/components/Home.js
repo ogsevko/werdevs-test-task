@@ -1,5 +1,6 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import { Calendar } from './Calendar';
 
 export function Home() {
   return (
@@ -20,7 +21,9 @@ export function Home() {
           This will save you time.
         </p>
       </div>
-      <div className="home__calendar"></div>
+      <div className="home__panel">
+        <Calendar />
+      </div>
     </main>
   );
 };

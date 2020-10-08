@@ -6,18 +6,23 @@ const classNames = require('classnames');
 
 export const CalendarWeek = ({ week }) => {
   return (
-    <tr className="calendar__week">
+    <div className="calendar__week">
       {week.map((day, index) => (
-        <td
+        <div
           className={
-            classNames('calendar__day', `calenday__day-${day.class}`)
+            classNames(
+              'calendar__day',
+              `calendar__day-${day.class}`,
+            )
           }
           title={dayNames[index]}
           key={day.id}
         >
-          {day.number}
-        </td>
+          <span className="calendar__number">
+            {day.number}
+          </span>
+        </div>
       ))}
-    </tr>
+    </div>
   );
 };

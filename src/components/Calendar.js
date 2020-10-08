@@ -6,13 +6,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const Calendar = () => {
   const [month, setMonth] = useState('');
-  const [year, setYear] = useState('');
+  const [year, setYear] = useState(null);
   const [weeks, setWeeks] = useState([]);
 
   useEffect(() => {
     const fullDate = new Date();
 
-    setMonth(monthNames[fullDate.getMonth()]);
+    setMonth(fullDate.getMonth());
     setYear(fullDate.getFullYear());
 
     const calendarWeeks
@@ -20,6 +20,12 @@ export const Calendar = () => {
 
     setWeeks(calendarWeeks);
   }, []);
+
+  useEffect(() => {
+    const calendarWeeks = getDayNumbers(month, year);
+
+    setWeeks(calendarWeeks);
+  }, [month, year]);
 
   function getDayNumbers(newMonth, newYear) {
     const nDaysPrevMonth = new Date(newYear, newMonth, 0).getDate();
@@ -32,7 +38,7 @@ export const Calendar = () => {
     const dayNumbersByWeeks = [];
 
     let newId = '';
-    let i = nDaysPrevMonth - firstDayCurrentMonth - 1;
+    let i = nDaysPrevMonth - firstDayCurrentMonth + 1;
 
     if (firstDayCurrentMonth !== 0) {
       for (i; i <= nDaysPrevMonth; i++) {
@@ -83,39 +89,70 @@ export const Calendar = () => {
     return dayNumbersByWeeks;
   }
 
+  const changeMonth = (event) => {
+    let newMonth;
+    let newYear = year;
+
+    if (event.target.id === 'arrow-left') {
+      if (month === 0) {
+        newMonth = 11;
+        newYear = year - 1;
+      } else {
+        newMonth = month - 1;
+      }
+    } else if (event.target.id === 'arrow-right') {
+      if (month === 11) {
+        newMonth = 0;
+        newYear = year + 1;
+      } else {
+        newMonth = month + 1;
+      }
+    }
+
+    setMonth(newMonth);
+    setYear(newYear);
+  };
+
   return (
     <div className="calendar">
       <div className="calendar__header">
         <img
           src={process.env.PUBLIC_URL + 'arrow-left.svg'}
+          id="arrow-left"
           alt="Click on this arrow to move one month back"
           className="calendar__arrow"
+          onClick={(e) => changeMonth(e)}
         />
-        <h2 className = "calendar__month">
-          {`${month} ${year}`}
+        <h2 className = "calendar__date">
+          {`${monthNames[month]} ${year}`}
         </h2>
         <img
-          src={process.env.PUBLIC_URL + 'arrow-left.svg'}
+          src={process.env.PUBLIC_URL + 'arrow-right.svg'}
+          id="arrow-right"
           alt="Click on this arrow to move one month ahead"
           className="calendar__arrow"
+          onClick={(e) => changeMonth(e)}
         />
       </div>
 
-      <table className="calendar__month">
-        {weeks.map((week) => (
-          <CalendarWeek week={week} />
+      <div className="calendar__month">
+        {weeks.map((week, index) => (
+          <CalendarWeek
+            week={week}
+            key={index}
+          />
         ))}
+      </div>
 
-        <tr className="calendar__footer">
-          {dayNames.map((dayName) => (
-            <td className="calendar__day-name">
-              {
-                dayName[0]
-              }
-            </td>
-          ))}
-        </tr>
-      </table>
+      <div className="calendar__footer">
+        {dayNames.map((dayName) => (
+          <div className="calendar__day calendar__day-bright">
+            <span className="calendar__day-name">
+              {dayName[0]}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
