@@ -9,6 +9,7 @@ export const Calendar = () => {
   const [year, setYear] = useState(null);
   const [weeks, setWeeks] = useState([]);
 
+  // componentDidMount
   useEffect(() => {
     const fullDate = new Date();
 
@@ -21,12 +22,14 @@ export const Calendar = () => {
     setWeeks(calendarWeeks);
   }, []);
 
+  // componentDidUpdate
   useEffect(() => {
     const calendarWeeks = getDayNumbers(month, year);
 
     setWeeks(calendarWeeks);
   }, [month, year]);
 
+  // Function for generating sequence of numbers for days in the calendar
   function getDayNumbers(newMonth, newYear) {
     const nDaysPrevMonth = new Date(newYear, newMonth, 0).getDate();
     const nDaysCurrentMonth = new Date(newYear, newMonth + 1, 0).getDate();
@@ -89,6 +92,7 @@ export const Calendar = () => {
     return dayNumbersByWeeks;
   }
 
+  // Click handler for month swiping
   const changeMonth = (event) => {
     let newMonth;
     let newYear = year;
@@ -113,6 +117,7 @@ export const Calendar = () => {
     setYear(newYear);
   };
 
+  // JSX
   return (
     <div className="calendar">
       <div className="calendar__header">
