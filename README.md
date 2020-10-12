@@ -5,8 +5,9 @@ This SPA was made as a test task for weRdevs.
 - HTML
 - SCSS
 - JavaScript
-- React.js
+- React
 - React Router
+- Redux
 
 ## Available Scripts
 
