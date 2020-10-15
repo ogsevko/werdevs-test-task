@@ -92,7 +92,7 @@ export const Calendar = () => {
     return dayNumbersByWeeks;
   }
 
-  // Click handler for month swiping
+  // Click handler for changing month
   const changeMonth = (event) => {
     let newMonth;
     let newYear = year;
